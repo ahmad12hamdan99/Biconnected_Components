@@ -4,7 +4,7 @@
 
 #include <memory>
 
-void test(const std::shared_ptr<biconnected_interface::srv::FindBiconnectedComponents::Request> request,
+void caller(const std::shared_ptr<biconnected_interface::srv::FindBiconnectedComponents::Request> request,
                 std::shared_ptr<biconnected_interface::srv::FindBiconnectedComponents::Response> response)  
 {
   
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
   std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("biconnected_server"); 
 
   rclcpp::Service<biconnected_interface::srv::FindBiconnectedComponents>::SharedPtr service =  
-    node->create_service<biconnected_interface::srv::FindBiconnectedComponents>("FindBiconnectedComponents",  &test); 
+    node->create_service<biconnected_interface::srv::FindBiconnectedComponents>("FindBiconnectedComponents",  &caller); 
 
   RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Waiting for requestes----------"); 
 
